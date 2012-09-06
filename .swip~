@@ -1,0 +1,2 @@
+#!/bin/bash
+while sleep 1 ; do wmctrl -r calculator -b add,shaded ; sleep 2 ; wmctrl -r calculator -b remove,shaded ; done

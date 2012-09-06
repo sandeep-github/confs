@@ -1,0 +1,15 @@
+#!/bin/bash
+case $* in
+    h)
+	xdotool mousemove_relative -- -300 0
+	;;
+    l)
+	xdotool mousemove_relative 300 0
+	;;
+    j)
+	xdotool mousemove_relative 0 300
+	;;
+    k)
+	xdotool mousemove_relative -- 0 -300
+	;;
+esac

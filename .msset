@@ -1,0 +1,11 @@
+#!/bin/bash
+eval $(xdotool getmouselocation --shell 2> /dev/null)
+if test $X -le 1920
+then 
+    X=$((X+1920))
+else
+    X=$((X-1920))
+fi
+xdotool  mousemove $X $Y
+#xdotool  click 1
+#xdotool mousemove 0 0 click 1 mousemove restore
