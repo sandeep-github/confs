@@ -1,0 +1,22 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: _norc.sh
+#
+#         USAGE: ./_norc.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Wednesday 05 September 2012 04:57:59  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+gnome-terminal -e "bash --norc"
+

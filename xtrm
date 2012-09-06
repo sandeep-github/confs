@@ -1,0 +1,4 @@
+#xterm -fn 10x20 -bg black -fg gray -sb -sl 5000
+#xterm -T xterm -n xterm -fn 10x20 -bg black -fg gray -sb -sl 5000 -rightbar $*
+#xterm -fn 10x20 -bg black -fg gray -sb -sl 5000 -rightbar $*
+xterm -fn 10x20 -sl 5000 $*

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#===============================================================================
+#
+#          FILE:  emacc.sh
+#
+#         USAGE:  ./emacc.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (),
+#       COMPANY:
+#       CREATED: Friday 03 June 2011 02:46:12  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+x=$(ps -elf | grep 'emacs --daemon'|wc -l)
+if [ $x -ne 2 ]
+then
+    emacs --daemon
+fi
+
+if [ $# -eq 0 ]
+then
+    emacsclient `pwd`
+else
+    emacsclient $*
+fi

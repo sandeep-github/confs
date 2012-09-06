@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#===============================================================================
+#
+#          FILE:  emacr.sh
+# 
+#         USAGE:  ./emacr.sh 
+# 
+#   DESCRIPTION:  run emacs with rynan's configuration
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (), 
+#       COMPANY: 
+#       CREATED: Friday 16 September 2011 09:13:19  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+if [ $# -eq 0 ]  
+then 
+    emacs --no-splash -nw -q -l ~/.emacs.ryan `pwd`
+else 
+    emacs --no-splash -nw -q -l ~/.emacs.ryan $*
+fi 

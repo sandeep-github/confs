@@ -1,0 +1,175 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: _xdo.sh #
+#         USAGE: ./_xdo.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Tuesday 17 July 2012 07:55:19  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+#set -o nounset                              # Treat unset variables as an error
+waittime=3
+
+
+count=$1
+cmd=$2
+
+num=${#count}
+if test $num -eq 0
+then
+    echo Usage : $0 count command
+    echo count not given.
+    exit 1
+fi
+
+
+num=${#cmd}
+if test $num -eq 0
+then
+    echo Usage : $0 count command
+    echo command not given
+    exit 1
+fi
+
+sleep $waittime
+
+xdotool key --delay 0  Escape i
+while test $count -gt 0
+do
+    count=$((count-1))
+    echo $cmd | while read line
+    do
+	num=${#line}
+	cnt=0
+	while test $cnt -lt $num
+	do
+	    origChar=${line:$cnt:1}
+	    lowerChar=${origChar,,}
+	    case $origChar in
+		[[:lower:]]|[0-9])
+		    xdotool key --delay 0  $origChar
+		    ;;
+		[[:upper:]])
+		    xdotool key --delay 0  shift+$lowerChar
+		    ;;
+		\`)
+		    xdotool key --delay 0  grave
+		    ;;
+		\~)
+		    xdotool key --delay 0  asciitilde
+		    ;;
+		\!)
+		    xdotool key --delay 0  exclam
+		    ;;
+
+		\@)
+		    xdotool key --delay 0  at
+		    ;;
+		\#)
+		    xdotool key --delay 0  numbersign
+		    ;;
+		\$)
+		    xdotool key --delay 0  dollar
+		    ;;
+		\%)
+		    xdotool key --delay 0  percent
+		    ;;
+		\^)
+		    xdotool key --delay 0  asciicircum
+		    ;;
+		\&)
+		    xdotool key --delay 0  ampersand
+		    ;;
+		\*)
+		    xdotool key --delay 0  asterisk
+		    ;;
+		\()
+		    xdotool key --delay 0  parenleft
+		    ;;
+		\))
+		    xdotool key --delay 0  parenright
+		    ;;
+		\-)
+		    xdotool key --delay 0  minus
+		    ;;
+		\_)
+		    xdotool key --delay 0  shift+minus
+		    #xdotool key --delay 0  underscore
+		    ;;
+		\=)
+		    xdotool key --delay 0  equal
+		    ;;
+		\+)
+		    xdotool key --delay 0  plus
+		    ;;
+		\[)
+		    xdotool key --delay 0  bracketleft
+		    ;;
+		\{)
+		    xdotool key --delay 0  braceleft
+		    ;;
+		\])
+		    xdotool key --delay 0  bracketright
+		    ;;
+		\})
+		    xdotool key --delay 0  braceright
+		    ;;
+		\\)
+		    xdotool key --delay 0  backslash
+		    ;;
+		\|)
+		    #xdotool key --delay 0  bar
+		    xdotool key --delay 0  shift+backslash
+		    ;;
+		\;)
+		    xdotool key --delay 0  semicolon
+		    ;;
+		\:)
+		    xdotool key --delay 0  colon
+		    ;;
+		\')
+		    xdotool key --delay 0  apostrophe
+		    ;;
+		\")
+		    xdotool key --delay 0  quotedbl
+		    ;;
+		\,)
+		    xdotool key --delay 0  comma
+		    ;;
+		\<)
+		    xdotool key --delay 0  shift+comma
+		    #xdotool key --delay 0  less
+		    ;;
+		\.)
+		    xdotool key --delay 0  period
+		    ;;
+		\>)
+		    xdotool key --delay 0  shift+period
+		    #xdotool key --delay 0  greater
+		    ;;
+		\/)
+		    xdotool key --delay 0  slash
+		    ;;
+		\?)
+		    xdotool key --delay 0  shift+slash
+		    #xdotool key --delay 0  question
+		    ;;
+		*)
+		    xdotool key --delay 0  space
+		    ;;
+	    esac    # --- end of case ---
+	    cnt=$((cnt+1))
+	done
+    done
+    xdotool key --delay 0  Return control+b o Escape i
+done
+#      #upperChar=${origChar^^}

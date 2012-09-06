@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+gksudo virsh start Windows_7

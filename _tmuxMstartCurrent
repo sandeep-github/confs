@@ -1,0 +1,37 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: test.sh
+#
+#         USAGE: ./test.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Sunday 19 August 2012 01:56:45  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+if [[ $# == 0 || $1 == --help ]]
+then
+    echo cmd file not given
+    exit -1
+fi
+cmdFile=$1
+
+tmux send-keys "exit" Enter
+
+sleep 1
+cat $* | while read cmd ;
+do
+    tmux select-layout tiled > /dev/null 2> /dev/null
+    tmux  split-window -h  "$cmd ; echo $? ; bash ; sleep 100" #"echo $i; sleep 100" #\; split-window -d \; attach
+done
+
+tmux select-layout tiled      > /dev/null 2> /dev/null

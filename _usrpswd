@@ -1,0 +1,43 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: _usrpswd.sh
+#
+#         USAGE: ./_usrpswd.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Friday 17 August 2012 12:45:23  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+usr=$1
+pswd=$2
+
+num=${#usr}
+if test $num -eq 0
+then
+    echo usr not given
+    exit 1
+fi
+
+num=${#pswd}
+if test $num -eq 0
+then
+    echo password not given
+    exit 1
+fi
+
+_xdoecho $usr
+xdotool key Return
+sleep 2
+_xdoecho  $pswd
+xdotool key Return
+

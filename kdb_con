@@ -1,0 +1,3 @@
+#!/bin/bash
+socat UNIX-CONNECT:$1 PTY,link=$1_dump &
+screen $1_dump

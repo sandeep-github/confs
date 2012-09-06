@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+while true
+do
+    for pid in $(ps -C dd -o pid=)
+    do
+	sudo kill -USR1 $pid
+    done
+    sleep 5
+done

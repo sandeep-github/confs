@@ -1,0 +1,38 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: _xdo.sh #
+#         USAGE: ./_xdo.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Tuesday 17 July 2012 07:55:19  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+#set -o nounset                              # Treat unset variables as an error
+waittime=3
+#sleep $waittime
+count=$1
+cmd=$2
+
+num=${#count}
+if test $num -eq 0
+then
+    echo usage : $0 count char
+    echo count not given.
+    exit -1
+fi
+
+while test $count -gt 0
+do
+    count=$((count-1))
+    xdotool key Return ctrl+b o
+done
+#      #upperChar=${origChar^^}

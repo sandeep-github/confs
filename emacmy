@@ -1,0 +1,27 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE:  emacsm.sh
+# 
+#         USAGE:  ./emacsm.sh 
+# 
+#   DESCRIPTION:  
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (), 
+#       COMPANY: 
+#       CREATED: Friday 16 September 2011 12:40:52  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+if [ $# -eq 0 ]  
+then 
+    emacs --no-splash -nw -q -l ~/.emacs.my `pwd`
+else 
+    emacs --no-splash -nw -q -l ~/.emacs.my $*
+fi
+ 

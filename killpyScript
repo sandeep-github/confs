@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if [ $# -ne 1 ]
+then
+    echo invalid param
+    exit
+else
+    for pid in $(ps -C python -o pid=) ; do ps -elf 2> /dev/null| grep -i $1 2> /dev/null | if grep $pid > /dev/null; then echo $pid;  kill -9 $pid ; fi ;done
+fi
