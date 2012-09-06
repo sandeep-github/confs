@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+vinagre  --vnc-scale :$* &
+#vinagre -f --geometry=1920x1080 :0 &

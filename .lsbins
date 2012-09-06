@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo $PATH | sed -e "s/:/\n/g"|
+while read line; do ls $line; done
+

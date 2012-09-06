@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# flush all interfaces
+/sbin/ip addr flush dev eth1
+
+# create bridge
+/sbin/brctl addbr br0
+
+# add interfaces to bridge
+/sbin/brctl addif br0 eth1
+
+# up bridge and gate ip
+/sbin/ip link set dev br0  up
+/sbin/dhclient br0

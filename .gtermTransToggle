@@ -1,0 +1,39 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE:  .bansheepausetoggle.sh
+#
+#         USAGE:  ./.bansheepausetoggle.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (),
+#       COMPANY:
+#       CREATED: Wednesday 06 July 2011 03:12:12  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+if [ ! -f ~/.gtermTransFlag ]
+then
+    echo 0 > ~/.gtermTransFlag
+fi
+
+
+GTERMTRANSTOGGLE=`cat ~/.gtermTransFlag`
+
+if [ $GTERMTRANSTOGGLE = 0 ]
+then
+    echo 1 > ~/.gtermTransFlag
+    gconftool -s /apps/gnome-terminal/profiles/Default/background_type -t string solid
+    gconftool -s /apps/guake/style/background/transparency -t integer 0
+else
+    echo 0 > ~/.gtermTransFlag
+    gconftool -s /apps/gnome-terminal/profiles/Default/background_type -t string transparent
+    gconftool -s /apps/guake/style/background/transparency -t integer 100
+fi

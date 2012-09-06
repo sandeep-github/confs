@@ -1,0 +1,55 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE:  pdfview.sh
+#
+#         USAGE:  ./pdfview.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (),
+#       COMPANY:
+#       CREATED: 11/18/2011 05:47:22 PM IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+if ! test $*
+then
+    echo  No parameter provided
+    exit
+fi
+
+if ! test -d ~/.pdfview
+then
+    if ! mkdir ~/.pdfview
+    then
+        stat=$?
+        echo Failed to create cache dir
+        exit $stat
+    fi
+fi
+
+for i in `md5sum $*`
+do
+    checksum=$i
+    break
+done
+
+if test -f ~/.pdfview/$checksum
+then
+    echo "File already converted"
+elif ! pdftotext $*  ~/.pdfview/$*.org
+then
+    stat=$?
+    echo Failed to convert pdf format
+    exit $stat
+fi
+
+touch ~/.pdfview/$checksum
+vim ~/.pdfview/$*.org

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+sudo modprobe -r psmouse
+sudo modprobe -i psmouse
+
+

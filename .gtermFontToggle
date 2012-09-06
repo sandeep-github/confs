@@ -1,0 +1,53 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE:  .bansheepausetoggle.sh
+#
+#         USAGE:  ./.bansheepausetoggle.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (),
+#       COMPANY:
+#       CREATED: Wednesday 06 July 2011 03:12:12  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+if [ ! -f ~/.gtermFontFlag ]
+then
+    echo 0 > ~/.gtermFontFlag
+fi
+
+
+GTERMFONTTOGGLE=`cat ~/.gtermFontFlag`
+
+if [ $GTERMFONTTOGGLE = 0 ]
+then
+    echo 1 > ~/.gtermFontFlag
+    gconftool -s /apps/gnome-terminal/profiles/Default/font -t string "Bitstream Vera Sans Mono Bold 11"
+    gconftool -s /apps/gnome-terminal/profiles/Default/title -t string "Bitstream Vera Sans Mono Bold 11"
+elif [ $GTERMFONTTOGGLE = 1 ]
+then
+    echo 2 > ~/.gtermFontFlag
+    gconftool -s /apps/gnome-terminal/profiles/Default/font -t string "ProggyCleanTTSZBP Bold 14"
+    gconftool -s /apps/gnome-terminal/profiles/Default/title -t string "ProggyCleanTTSZBP Bold 14"
+elif [ $GTERMFONTTOGGLE = 2 ]
+then
+    echo 0 > ~/.gtermFontFlag
+    gconftool -s /apps/gnome-terminal/profiles/Default/font -t string  "Inconsolata Bold 12"
+    gconftool -s /apps/gnome-terminal/profiles/Default/title -t string  "Inconsolata Bold 12"
+fi
+
+#sleep 2
+#gconftool -s /apps/gnome-terminal/profiles/Default/title -t string Terminal
+
+#/apps/gnome-terminal/profiles/Default/font
+#Bitstream Vera Sans Mono Bold 11
+#ProggyCleanTTSZBP Bold 11
+#/apps/gnome-terminal/profiles/Default/title

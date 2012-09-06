@@ -1,0 +1,46 @@
+#!/bin/bash -
+#===============================================================================
+#
+#          FILE: chgeom.sh
+#
+#         USAGE: ./chgeom.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
+#       CREATED: Thursday 28 June 2012 11:00:39  IST IST
+#      REVISION:  ---
+#===============================================================================
+
+# 1920x1080
+
+set -o nounset                              # Treat unset variables as an error
+cnt=3
+
+geo=$(xdotool getactivewindow getwindowgeometry 2> /dev/null  | grep -i Geometry | cut -d: -f2 )
+x=$(echo $geo | cut -d'x' -f1)
+y=$(echo $geo | cut -d'x' -f2)
+
+case $* in
+    +)
+	if test $x -lt 1824 ; then  x=$((x+96)) ; fi
+	if test $y -lt 1026 ; then  y=$((y+54)) ; fi
+	cnt=3
+	;;
+    -)
+	if test $x -gt 96 ; then  x=$((x-96)) ; fi
+	if test $y -gt 54 ; then  y=$((y-54)) ; fi
+	;;
+    *)  exit -1
+	;;
+esac    # --- end of case ---
+
+for i in $(seq 1 $cnt)
+do
+    xdotool getactivewindow windowsize $x $y
+done

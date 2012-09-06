@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+fdisk -l 2> /dev/null | grep Disk | grep bytes

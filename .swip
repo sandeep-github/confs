@@ -1,0 +1,2 @@
+#!/bin/bash
+while sleep 1 ; do wmctrl -r cheese -b add,shaded ; sleep 2 ; wmctrl -r cheese -b remove,shaded ; done

@@ -1,0 +1,24 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;Library Paths
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d.min")
+
+;; globel newline and indent for enter key
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
+(define-key global-map (kbd "RET")  'reindent-then-newline-and-indent)
+
+(require 'sr-speedbar)
+
+;;(setq yas/trigger-key (kbd "C-c <kp-multiply>"))
+(define-key global-map (kbd "C-x SPC") 'sr-speedbar-toggle)
+(define-key global-map (kbd "C-x RET") 'sr-speedbar-select-window)
+
+(define-key global-map (kbd "C-c s") 'vshellopen)
+(define-key global-map (kbd "C-c S") 'hshellopen)
+(define-key global-map (kbd "C-c a") 'delete-window)
+(define-key global-map (kbd "C-c D") 'split-window-horizontally)
+(define-key global-map (kbd "C-c d") 'split-window-vertically)
+
+;; line number show
+(global-linum-mode 1)
+;; applicable in shell mode

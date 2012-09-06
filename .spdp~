@@ -1,0 +1,18 @@
+#!/bin/bash
+
+wmctrl -k on
+sleep 1
+cheese &
+
+sleep 1
+wmctrl -r cheese  -e 0,450,350,500,500
+
+sleep 1
+xpenguins -all &
+
+.swip &
+dbus-agent
+xpenguins-stop
+wmctrl -k off
+killall .swip 
+killall cheese 

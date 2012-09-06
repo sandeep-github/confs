@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+if [ $# -ne 1 ] ; then echo "one arg : session name expected" ; exit ; fi
+screen -S $* -c ~/.guestscreenrc 

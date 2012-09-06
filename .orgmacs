@@ -1,0 +1,2 @@
+#!/usr/bin/env bash 
+emacs -nw --no-splash -q -l ~/.emacs.org $*

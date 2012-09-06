@@ -1,0 +1,9 @@
+fonts:
+    Bit stream vara san mono
+    ProggyCleanTTSZBP
+    Inconsolata
+
+afterInstall:
+    vim
+    emacs
+    clipit
